@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Form, Col, Button } from 'react-bootstrap';
+import { Form, Button } from 'react-bootstrap';
 import { movieType } from '../../constants/constants';
 
 const inputText = {
@@ -27,23 +27,17 @@ const MovieListForm = ({ handleSearchClick }) => {
           placeholder="Search movie"
         />
       </Form.Group>
-      <select>
-        {movieType.map((type) => (
-          <option value={type} key={type}>
-            {type}
-          </option>
-        ))}
-      </select>
-      {/* <Form.Group as={Col}>
+      <Form.Group>
         <Form.Label>Type</Form.Label>
-        <Form.Control as="select" multiple value={field}>
-          {movieType.map((type) => (
-            <option value={type} key={type}>
-              {type}
-            </option>
+        <Form.Control as="select" custom>
+          {movieType.map((type, idx) => (
+            <option key={`${type}-${idx}`}>{type}</option>
           ))}
+          <option>Movie</option>
+          <option>Series</option>
+          <option>Episodes</option>
         </Form.Control>
-      </Form.Group> */}
+      </Form.Group>
       <Form.Group>
         <Form.Label>Year</Form.Label>
         <Form.Control
