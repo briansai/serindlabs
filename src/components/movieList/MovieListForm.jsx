@@ -17,7 +17,7 @@ const MovieListForm = ({ handleSearchClick }) => {
   };
 
   return (
-    <Form onSubmit={handleSearchClick}>
+    <Form onSubmit={(e) => handleSearchClick(e, movie, year)}>
       <Form.Group>
         <Form.Label>Search</Form.Label>
         <Form.Control
@@ -27,7 +27,14 @@ const MovieListForm = ({ handleSearchClick }) => {
           placeholder="Search movie"
         />
       </Form.Group>
-      <Form.Group as={Col}>
+      <select>
+        {movieType.map((type) => (
+          <option value={type} key={type}>
+            {type}
+          </option>
+        ))}
+      </select>
+      {/* <Form.Group as={Col}>
         <Form.Label>Type</Form.Label>
         <Form.Control as="select" multiple value={field}>
           {movieType.map((type) => (
@@ -36,7 +43,7 @@ const MovieListForm = ({ handleSearchClick }) => {
             </option>
           ))}
         </Form.Control>
-      </Form.Group>
+      </Form.Group> */}
       <Form.Group>
         <Form.Label>Year</Form.Label>
         <Form.Control

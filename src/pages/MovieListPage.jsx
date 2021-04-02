@@ -4,9 +4,9 @@ import './MovieListPage.scss';
 
 const MovieListPage = () => {
   const [movieList, setMovieList] = useState([]);
-  const handleSearchClick = (e) => {
+  const handleSearchClick = (e, movie, year) => {
     e.preventDefault();
-    console.log('hello!');
+    console.log(movie, year);
   };
 
   return (
