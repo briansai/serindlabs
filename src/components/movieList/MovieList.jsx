@@ -2,7 +2,7 @@ import { Table, Button } from 'react-bootstrap';
 import { tableHeaders } from '../../constants/constants';
 import './MovieList.scss';
 
-const MovieList = ({ movieList }) => {
+const MovieList = ({ movieList, handleDetailClick }) => {
   return (
     <div className="movie-list__container">
       <Table striped bordered hover>
@@ -14,8 +14,8 @@ const MovieList = ({ movieList }) => {
           </tr>
         </thead>
         <tbody>
-          {movieList.map((movies, idx) => {
-            const { Title, Year, Poster, Type } = movies;
+          {movieList.map((movie, idx) => {
+            const { Title, Year, Poster, Type } = movie;
             return (
               <tr key={`${Title}-${idx}`} className="movie-list__description">
                 <td>{Title}</td>
@@ -25,7 +25,9 @@ const MovieList = ({ movieList }) => {
                 <td>{Year}</td>
                 <td>{Type}</td>
                 <td>
-                  <Button>Detail</Button>
+                  <Button onClick={(e) => handleDetailClick(e, movie)}>
+                    Detail
+                  </Button>
                 </td>
               </tr>
             );
