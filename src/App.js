@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import MovieListPage from './pages/MovieListPage';
-import MovieDetail from './pages/MovieDetailPage';
+import MovieDetailPage from './pages/MovieDetailPage';
 import './App.css';
 
 const App = () => {
   const [movieDetail, setMovieDetail] = useState({});
+  const [movieForm, setMovieForm] = useState({});
   const [movieList, setMovieList] = useState([]);
 
   const handleDetailClick = (e, movie) => {
@@ -23,10 +24,12 @@ const App = () => {
         <MovieListPage
           movieList={movieList}
           setMovieList={setMovieList}
+          movieForm={movieForm}
+          setMovieForm={setMovieForm}
           handleDetailClick={handleDetailClick}
         />
       ) : (
-        <MovieDetail
+        <MovieDetailPage
           movieDetail={movieDetail}
           handleBackClick={handleBackClick}
         />

@@ -7,9 +7,9 @@ const inputText = {
   year: '',
 };
 
-const MovieListForm = ({ handleSearchClick }) => {
-  const [type, setType] = useState('');
-  const [{ movie, year }, setState] = useState({ inputText });
+const MovieListForm = ({ handleSearchClick, movieForm }) => {
+  const [type, setType] = useState(movieForm.type || '');
+  const [{ movie, year }, setState] = useState({ ...(movieForm || inputText) });
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -30,6 +30,7 @@ const MovieListForm = ({ handleSearchClick }) => {
           name="movie"
           onChange={(e) => handleInputChange(e)}
           placeholder="Search movie"
+          defaultValue={movie}
           required
         />
       </Form.Group>
@@ -37,7 +38,7 @@ const MovieListForm = ({ handleSearchClick }) => {
         <Form.Label>Type: </Form.Label>
         <Form.Control
           as="select"
-          defaultValue="-Select-"
+          defaultValue={movieForm.type || '-Select-'}
           onChange={handleTypeChange}
         >
           <option disabled>-Select-</option>
@@ -52,6 +53,7 @@ const MovieListForm = ({ handleSearchClick }) => {
           onChange={(e) => handleInputChange(e)}
           type="text"
           name="year"
+          defaultValue={year}
           placeholder="Year"
         />
       </Form.Group>

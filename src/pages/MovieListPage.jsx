@@ -4,17 +4,27 @@ import MovieList from '../components/movieList/MovieList';
 import { fetchMovies } from '../api/fetchMovies';
 import './MovieListPage.scss';
 
-const MovieListPage = ({ movieList, setMovieList, handleDetailClick }) => {
+const MovieListPage = ({
+  movieList,
+  setMovieList,
+  movieForm,
+  setMovieForm,
+  handleDetailClick,
+}) => {
   const handleSearchClick = async (e, movie, year, type) => {
     e.preventDefault();
     const movies = await fetchMovies({ movie, year, type });
+    setMovieForm({ movie, year, type });
     setMovieList([movies.data]);
   };
 
   return (
     <div className="movie-list-page__container">
       <MovieListHeader />
-      <MovieListForm handleSearchClick={handleSearchClick} />
+      <MovieListForm
+        movieForm={movieForm}
+        handleSearchClick={handleSearchClick}
+      />
       {movieList.length ? (
         <MovieList
           movieList={movieList}
