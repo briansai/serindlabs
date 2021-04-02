@@ -1,13 +1,13 @@
-.movie-list {
+.movie-list-page {
   &::before {
     box-sizing: border-box;
   }
 
   &__container {
-    width: 70%;
-    margin: 0 auto;
+    width: 60%;
+    margin: 5% auto;
     border: 1px solid black;
-    padding: 5%;
+    padding: 3%;
   }
 
   &__no-movie {

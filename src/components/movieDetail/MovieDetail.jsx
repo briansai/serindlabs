@@ -35,8 +35,7 @@ const MovieDetail = ({ movieDetail }) => {
     } else if (item === 'Poster') {
       return (
         <ListGroup.Item>
-          Image:
-          <img src={value} />
+          Image: <img src={value} alt="poster" />
         </ListGroup.Item>
       );
     }

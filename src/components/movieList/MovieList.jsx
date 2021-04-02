@@ -20,7 +20,7 @@ const MovieList = ({ movieList, handleDetailClick }) => {
               <tr key={`${Title}-${idx}`} className="movie-list__description">
                 <td>{Title}</td>
                 <td>
-                  <img src={Poster} height="32" width="32" alt="movie"></img>
+                  <img src={Poster} height="32" width="32" alt="movie" />
                 </td>
                 <td>{Year}</td>
                 <td>{Type}</td>

@@ -1,18 +1,19 @@
-import { useState } from 'react';
+import MovieListHeader from '../components/movieList/MovieListHeader';
 import MovieListForm from '../components/movieList/MovieListForm';
 import MovieList from '../components/movieList/MovieList';
 import { fetchMovies } from '../api/fetchMovies';
 import './MovieListPage.scss';
 
 const MovieListPage = ({ movieList, setMovieList, handleDetailClick }) => {
-  const handleSearchClick = async (e, movie, year) => {
+  const handleSearchClick = async (e, movie, year, type) => {
     e.preventDefault();
-    const movies = await fetchMovies({ movie, year });
+    const movies = await fetchMovies({ movie, year, type });
     setMovieList([movies.data]);
   };
 
   return (
-    <div className="movie-list__container">
+    <div className="movie-list-page__container">
+      <MovieListHeader />
       <MovieListForm handleSearchClick={handleSearchClick} />
       {movieList.length ? (
         <MovieList
@@ -20,7 +21,7 @@ const MovieListPage = ({ movieList, setMovieList, handleDetailClick }) => {
           handleDetailClick={handleDetailClick}
         />
       ) : (
-        <div className="movie-list__no-movie">
+        <div className="movie-list-page__no-movie">
           Please search for a movie, series, or episode
         </div>
       )}

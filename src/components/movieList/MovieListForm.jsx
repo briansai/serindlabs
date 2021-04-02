@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
-import { movieType } from '../../constants/constants';
+import './MovieListForm.scss';
 
 const inputText = {
   movie: '',
@@ -8,7 +8,7 @@ const inputText = {
 };
 
 const MovieListForm = ({ handleSearchClick }) => {
-  const [field, setField] = useState('Select Movie Type');
+  const [type, setType] = useState('');
   const [{ movie, year }, setState] = useState({ inputText });
 
   const handleInputChange = (e) => {
@@ -16,30 +16,38 @@ const MovieListForm = ({ handleSearchClick }) => {
     setState((prevState) => ({ ...prevState, [name]: value }));
   };
 
+  const handleTypeChange = (e) => {
+    const { value } = e.target;
+    setType(value);
+  };
+
   return (
-    <Form onSubmit={(e) => handleSearchClick(e, movie, year)}>
-      <Form.Group>
-        <Form.Label>Search</Form.Label>
+    <Form onSubmit={(e) => handleSearchClick(e, movie, year, type)}>
+      <Form.Group className="form">
+        <Form.Label>Search: </Form.Label>
         <Form.Control
           type="text"
           name="movie"
           onChange={(e) => handleInputChange(e)}
           placeholder="Search movie"
+          required
         />
       </Form.Group>
-      <Form.Group>
-        <Form.Label>Type</Form.Label>
-        <Form.Control as="select" custom>
-          {movieType.map((type, idx) => (
-            <option key={`${type}-${idx}`}>{type}</option>
-          ))}
-          <option>Movie</option>
-          <option>Series</option>
-          <option>Episodes</option>
+      <Form.Group className="form">
+        <Form.Label>Type: </Form.Label>
+        <Form.Control
+          as="select"
+          defaultValue="-Select-"
+          onChange={handleTypeChange}
+        >
+          <option disabled>-Select-</option>
+          <option>movie</option>
+          <option>series</option>
+          <option>episode</option>
         </Form.Control>
       </Form.Group>
-      <Form.Group>
-        <Form.Label>Year</Form.Label>
+      <Form.Group className="form">
+        <Form.Label>Year: </Form.Label>
         <Form.Control
           onChange={(e) => handleInputChange(e)}
           type="text"
