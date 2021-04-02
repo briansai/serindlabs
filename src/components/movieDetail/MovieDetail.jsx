@@ -19,7 +19,7 @@ const MovieDetail = ({ movieDetail }) => {
       return (
         <ListGroup>
           <ListGroup.Item>
-            Ratings:{' '}
+            <span className="movie-detail__item">Ratings: </span>
             {value.map((rating, index) => {
               const { Source, Value } = rating;
 
@@ -35,16 +35,24 @@ const MovieDetail = ({ movieDetail }) => {
     } else if (item === 'Poster') {
       return (
         <ListGroup.Item>
-          Image: <img src={value} alt="poster" />
+          <span className="movie-detail__item">Image:</span>{' '}
+          <span>
+            <img src={value} alt="poster" />
+          </span>
         </ListGroup.Item>
       );
     }
 
-    return <ListGroup.Item>{`${item}: ${value}`}</ListGroup.Item>;
+    return (
+      <ListGroup.Item>
+        <span className="movie-detail__item">{`${item}: `}</span>
+        <span>{value}</span>
+      </ListGroup.Item>
+    );
   };
 
   return (
-    <ListGroup variant="flush" className="detail-list__container">
+    <ListGroup variant="flush" className="movie-detail__container">
       {details.map((detail, idx) => {
         const item = detail[0];
         const value = detail[1];
