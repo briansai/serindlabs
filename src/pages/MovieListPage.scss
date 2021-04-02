@@ -1,0 +1,12 @@
+.movie-list {
+  &::before {
+    box-sizing: border-box;
+  }
+
+  &__container {
+    width: 70%;
+    margin: 0 auto;
+    border: 1px solid black;
+    padding: 5%;
+  }
+}
