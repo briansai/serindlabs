@@ -11,6 +11,20 @@ This project was done accordingly for an online assessment and used OMDB's api t
   brew install node
 ```
 
+## Clone
+
+Go to your terminal and clone project
+
+```
+git clone https://github.com/briansai/serindlabs.git
+```
+
+## Change into the project folder
+
+```
+cd serindlabs
+```
+
 ## Setup
 
 ```
