@@ -1,12 +1,10 @@
 .movie-list-page {
-  &::before {
-    box-sizing: border-box;
-  }
-
   &__container {
-    width: 60%;
-    margin: 5% auto;
-    border: 1px solid black;
+    width: 40%;
+    margin: 8% auto;
+    border: 1px solid rgba(black, 0.2);
+    box-shadow: 0 1.5rem 2rem rgba(black, 0.2);
+    border-radius: 15px;
     padding: 3%;
   }
 
