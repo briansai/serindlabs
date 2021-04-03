@@ -38,6 +38,10 @@ cd serindlabs
   localhost:3000
 ```
 
+## Files
+
+Please ignore all files outside of src. Files with relevant content are api, components, constants, pages, App.js, App.css.
+
 ## On Load
 
 On the main page, the application will present a blank movie list form to fill. The following parameters are available to be filled in: Search (required), Type (optional), Year(optional).
