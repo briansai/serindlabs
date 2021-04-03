@@ -1,11 +1,7 @@
 import { useState } from 'react';
-import { Form, Button, Card } from 'react-bootstrap';
+import { Form, Button } from 'react-bootstrap';
+import { inputText } from '../../constants/constants';
 import './MovieListForm.scss';
-
-const inputText = {
-  movie: '',
-  year: '',
-};
 
 const MovieListForm = ({ handleSearchClick, movieForm }) => {
   const [type, setType] = useState(movieForm.type || '');

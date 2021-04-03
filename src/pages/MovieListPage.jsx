@@ -18,6 +18,26 @@ const MovieListPage = ({
     setMovieList([movies.data]);
   };
 
+  const displayMovieList = () => {
+    if (movieList.length && movieList[0].Error) {
+      return (
+        <div className="movie-list-page__no-movie">
+          Your search does not exist. Please try again.
+        </div>
+      );
+    } else if (!movieList.length) {
+      return (
+        <div className="movie-list-page__no-movie">
+          Please search for a movie, series, or episode
+        </div>
+      );
+    }
+
+    return (
+      <MovieList movieList={movieList} handleDetailClick={handleDetailClick} />
+    );
+  };
+
   return (
     <div className="movie-list-page__container">
       <MovieListHeader />
@@ -25,7 +45,8 @@ const MovieListPage = ({
         movieForm={movieForm}
         handleSearchClick={handleSearchClick}
       />
-      {movieList.length ? (
+      {displayMovieList()}
+      {/* {movieList.length ? (
         <MovieList
           movieList={movieList}
           handleDetailClick={handleDetailClick}
@@ -34,7 +55,7 @@ const MovieListPage = ({
         <div className="movie-list-page__no-movie">
           Please search for a movie, series, or episode
         </div>
-      )}
+      )} */}
     </div>
   );
 };
